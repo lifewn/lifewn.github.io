@@ -11,7 +11,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
-
+<script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "不怕万人阻挡，只怕自己投降。你如何回忆，决定你是一个怎样的人！人生当苦无妨，良人当归即可。逝者如斯乎，不舍昼夜。";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
 
 
   
@@ -117,7 +141,7 @@
 
 
 <meta name="description" content="小程序APPID 每个小程序的唯一标示 每个账号只有一个APPID 个人账号与企业账号的区别 个人账号不能发布小程序 企业账号能发布小程序 注意：在公司开发时一定要用企业账号的APPID进行开发 账号申请 登陆后： 小程序控制平台： 管理：管理小程序 管理开发成员统计：统计小程序的使用情况功能：官方提供的功能开发：开发工程中所需要的APPID所在地址推广：推广小程序 文件结构app.js逻辑代码编">
-<meta name="keywords" content="山有封顶，还有彼岸，慢慢长途，终有回转，余味苦涩，终有回甘。">
+<meta name="keywords" content="html,js,javascript,css,html5,css3,ps,photoshop,php,mysql,ajax,微信小程序,app,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序笔记">
 <meta property="og:url" content="http://lifewn.github.io/2019/10/22/微信小程序笔记/index.html">
@@ -186,7 +210,32 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "不怕万人阻挡，只怕自己投降。你如何回忆，决定你是一个怎样的人！人生当苦无妨，良人当归即可。逝者如斯乎，不舍昼夜。";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -198,7 +247,7 @@
       </a>
     </div>
       
-        <h1 class="site-subtitle  animated  rubberBand delay-5s" itemprop="description"></h1>
+        <h1 class="site-subtitle  animated  rubberBand delay-5s" itemprop="description">不怕万人阻挡，只怕自己投降。你如何回忆，决定你是一个怎样的人！人生当苦无妨，良人当归即可。逝者如斯乎，不舍昼夜。</h1>
       
   </div>
 
@@ -631,7 +680,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">类型</span>
                 </a>
               </div>

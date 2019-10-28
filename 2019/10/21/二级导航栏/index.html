@@ -11,7 +11,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
-
+<script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "不怕万人阻挡，只怕自己投降。你如何回忆，决定你是一个怎样的人！人生当苦无妨，良人当归即可。逝者如斯乎，不舍昼夜。";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
 
 
   
@@ -117,7 +141,7 @@
 
 
 <meta name="description" content="为了工作和平时项目的需要，在自己工作空余时间自己写的一个css样式同时也是为了巩固css和sass的知识目的是为了：适应每一个项目自己重置样式,创造属于自己的style虽然目前已有很多流行和成熟的css框架，如bootstrap,Semantic UI,Pure…都有各的优点但还是决定做更加适合前端工作的css样式，我并没说是css框架，因为还需要不断更新自己在空余时间也会不断的去优化，学习和进步">
-<meta name="keywords" content="山有封顶，还有彼岸，慢慢长途，终有回转，余味苦涩，终有回甘。">
+<meta name="keywords" content="html,js,javascript,css,html5,css3,ps,photoshop,php,mysql,ajax,微信小程序,app,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二级导航栏">
 <meta property="og:url" content="http://lifewn.github.io/2019/10/21/二级导航栏/index.html">
@@ -186,7 +210,32 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "不怕万人阻挡，只怕自己投降。你如何回忆，决定你是一个怎样的人！人生当苦无妨，良人当归即可。逝者如斯乎，不舍昼夜。";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
@@ -198,7 +247,7 @@
       </a>
     </div>
       
-        <h1 class="site-subtitle  animated  rubberBand delay-5s" itemprop="description"></h1>
+        <h1 class="site-subtitle  animated  rubberBand delay-5s" itemprop="description">不怕万人阻挡，只怕自己投降。你如何回忆，决定你是一个怎样的人！人生当苦无妨，良人当归即可。逝者如斯乎，不舍昼夜。</h1>
       
   </div>
 
@@ -480,7 +529,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/19/从后端获取数据id拼接到a标签，跳转(1)/" rel="next" title="从后端获取数据id拼接到a标签，跳转">
+              <a href="/2019/10/19/从后端获取数据id拼接到a标签，跳转/" rel="next" title="从后端获取数据id拼接到a标签，跳转">
                 <i class="fa fa-chevron-left"></i> 从后端获取数据id拼接到a标签，跳转
               </a>
             
@@ -613,7 +662,7 @@ var jiathis_config={
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">类型</span>
                 </a>
               </div>
