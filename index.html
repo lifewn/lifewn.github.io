@@ -873,6 +873,320 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lifewn.github.io/2019/10/19/从后端获取数据id拼接到a标签，跳转(1)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lifewn">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/150256440.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lifewn">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="site-subtitle  animated  rubberBand delay-5s slower post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/19/从后端获取数据id拼接到a标签，跳转(1)/" itemprop="url">从后端获取数据id拼接到a标签，跳转</a></h2>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-19T15:59:13+08:00">
+                2019-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="从后端获取数据id拼接到a链接，跳转后获取链接id值，并在新页面调取数据"><a href="#从后端获取数据id拼接到a链接，跳转后获取链接id值，并在新页面调取数据" class="headerlink" title="从后端获取数据id拼接到a链接，跳转后获取链接id值，并在新页面调取数据"></a>从后端获取数据id拼接到a链接，跳转后获取链接id值，并在新页面调取数据</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"aa"</span>&gt;</span><br><span class="line"> &lt;a v-bind:href=<span class="string">"['1.html'+'?id='+tab.id]"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var c_url = 'url';</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/团建计划</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"> $.ajax(&#123;</span></span><br><span class="line"><span class="regexp">     type:"GET",</span></span><br><span class="line"><span class="regexp">     url:c_url+'/</span>plan/index<span class="string">',</span></span><br><span class="line"><span class="string">     dataType: "json",</span></span><br><span class="line"><span class="string">     success: function(res)&#123;</span></span><br><span class="line"><span class="string">         console.log(res.data.records);</span></span><br><span class="line"><span class="string">         new Vue(</span></span><br><span class="line"><span class="string">             &#123;</span></span><br><span class="line"><span class="string">                 el: "#aa",</span></span><br><span class="line"><span class="string">                 data: &#123;</span></span><br><span class="line"><span class="string">                     tabs:res.data.records,</span></span><br><span class="line"><span class="string">                 &#125;,</span></span><br><span class="line"><span class="string">             &#125;</span></span><br><span class="line"><span class="string">         );</span></span><br><span class="line"><span class="string">     &#125;</span></span><br><span class="line"><span class="string"> &#125;);</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="如此传递拼接跳转后页面为-：-1-html-id-1"><a href="#如此传递拼接跳转后页面为-：-1-html-id-1" class="headerlink" title="如此传递拼接跳转后页面为 ： 1.html?id=1"></a>如此传递拼接跳转后页面为 ： 1.html?id=1</h3><h3 id="然后再1-html页面内获取id的值，并且在此接口中获取其他数据并且展示"><a href="#然后再1-html页面内获取id的值，并且在此接口中获取其他数据并且展示" class="headerlink" title="然后再1.html页面内获取id的值，并且在此接口中获取其他数据并且展示;"></a>然后再1.html页面内获取id的值，并且在此接口中获取其他数据并且展示;</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'bb'</span>&gt;&#123;&#123;tab.title&#125;&#125;&lt;/div&gt;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">parseUrl</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">var</span> url=location.href;</span><br><span class="line">            <span class="keyword">var</span> i=url.indexOf(<span class="string">'?'</span>);</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">-1</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">var</span> querystr=url.substr(i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">var</span> arr1=querystr.split(<span class="string">'&amp;'</span>);</span><br><span class="line">            <span class="keyword">var</span> arr2=<span class="keyword">new</span> Object();</span><br><span class="line">            <span class="keyword">for</span>  (i <span class="keyword">in</span> arr1)&#123;</span><br><span class="line">                <span class="keyword">var</span> ta=arr1[i].split(<span class="string">'='</span>);</span><br><span class="line">                arr2[ta[<span class="number">0</span>]]=ta[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> arr2;</span><br><span class="line">        &#125;</span><br><span class="line">      <span class="keyword">var</span> id = parseUrl().id;<span class="comment">//此id就是我们从链接中获取的id的值</span></span><br><span class="line">     <span class="keyword">var</span> c_url = <span class="string">'url'</span>;</span><br><span class="line">      $.ajax(&#123;</span><br><span class="line">          type:<span class="string">"GET"</span>,</span><br><span class="line">          url:c_url+<span class="string">'/plan/index'</span>,</span><br><span class="line">          dataType: <span class="string">"json"</span>,</span><br><span class="line">          success: <span class="function"><span class="keyword">function</span><span class="params">(res)</span></span>&#123;</span><br><span class="line">              <span class="keyword">new</span> Vue(</span><br><span class="line">                  &#123;</span><br><span class="line">                      el: <span class="string">"#module4"</span>,</span><br><span class="line">                      data: &#123;</span><br><span class="line">                          tab:res.data.records[id],</span><br><span class="line">                      &#125;,</span><br><span class="line">                  &#125;</span><br><span class="line">              );</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+        
+    
+      
+            
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lifewn.github.io/2019/10/19/从后端获取数据id拼接到a标签，跳转/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lifewn">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/150256440.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lifewn">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="site-subtitle  animated  rubberBand delay-5s slower post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/19/从后端获取数据id拼接到a标签，跳转/" itemprop="url">从后端获取数据id拼接到a标签，跳转</a></h2>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-19T15:59:13+08:00">
+                2019-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="从后端获取数据id拼接到a链接，跳转后获取链接id值，并在新页面调取数据"><a href="#从后端获取数据id拼接到a链接，跳转后获取链接id值，并在新页面调取数据" class="headerlink" title="从后端获取数据id拼接到a链接，跳转后获取链接id值，并在新页面调取数据"></a>从后端获取数据id拼接到a链接，跳转后获取链接id值，并在新页面调取数据</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"aa"</span>&gt;</span><br><span class="line"> &lt;a v-bind:href=<span class="string">"['1.html'+'?id='+tab.id]"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">var c_url = 'url';</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/团建计划</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp"> $.ajax(&#123;</span></span><br><span class="line"><span class="regexp">     type:"GET",</span></span><br><span class="line"><span class="regexp">     url:c_url+'/</span>plan/index<span class="string">',</span></span><br><span class="line"><span class="string">     dataType: "json",</span></span><br><span class="line"><span class="string">     success: function(res)&#123;</span></span><br><span class="line"><span class="string">         console.log(res.data.records);</span></span><br><span class="line"><span class="string">         new Vue(</span></span><br><span class="line"><span class="string">             &#123;</span></span><br><span class="line"><span class="string">                 el: "#aa",</span></span><br><span class="line"><span class="string">                 data: &#123;</span></span><br><span class="line"><span class="string">                     tabs:res.data.records,</span></span><br><span class="line"><span class="string">                 &#125;,</span></span><br><span class="line"><span class="string">             &#125;</span></span><br><span class="line"><span class="string">         );</span></span><br><span class="line"><span class="string">     &#125;</span></span><br><span class="line"><span class="string"> &#125;);</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="如此传递拼接跳转后页面为-：-1-html-id-1"><a href="#如此传递拼接跳转后页面为-：-1-html-id-1" class="headerlink" title="如此传递拼接跳转后页面为 ： 1.html?id=1"></a>如此传递拼接跳转后页面为 ： 1.html?id=1</h3><h3 id="然后再1-html页面内获取id的值，并且在此接口中获取其他数据并且展示"><a href="#然后再1-html页面内获取id的值，并且在此接口中获取其他数据并且展示" class="headerlink" title="然后再1.html页面内获取id的值，并且在此接口中获取其他数据并且展示;"></a>然后再1.html页面内获取id的值，并且在此接口中获取其他数据并且展示;</h3><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'bb'</span>&gt;&#123;&#123;tab.title&#125;&#125;&lt;/div&gt;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">parseUrl</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">var</span> url=location.href;</span><br><span class="line">            <span class="keyword">var</span> i=url.indexOf(<span class="string">'?'</span>);</span><br><span class="line">            <span class="keyword">if</span>(i==<span class="number">-1</span>)<span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">var</span> querystr=url.substr(i+<span class="number">1</span>);</span><br><span class="line">            <span class="keyword">var</span> arr1=querystr.split(<span class="string">'&amp;'</span>);</span><br><span class="line">            <span class="keyword">var</span> arr2=<span class="keyword">new</span> Object();</span><br><span class="line">            <span class="keyword">for</span>  (i <span class="keyword">in</span> arr1)&#123;</span><br><span class="line">                <span class="keyword">var</span> ta=arr1[i].split(<span class="string">'='</span>);</span><br><span class="line">                arr2[ta[<span class="number">0</span>]]=ta[<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> arr2;</span><br><span class="line">        &#125;</span><br><span class="line">      <span class="keyword">var</span> id = parseUrl().id;<span class="comment">//此id就是我们从链接中获取的id的值</span></span><br><span class="line">     <span class="keyword">var</span> c_url = <span class="string">'url'</span>;</span><br><span class="line">      $.ajax(&#123;</span><br><span class="line">          type:<span class="string">"GET"</span>,</span><br><span class="line">          url:c_url+<span class="string">'/plan/index'</span>,</span><br><span class="line">          dataType: <span class="string">"json"</span>,</span><br><span class="line">          success: <span class="function"><span class="keyword">function</span><span class="params">(res)</span></span>&#123;</span><br><span class="line">              <span class="keyword">new</span> Vue(</span><br><span class="line">                  &#123;</span><br><span class="line">                      el: <span class="string">"#module4"</span>,</span><br><span class="line">                      data: &#123;</span><br><span class="line">                          tab:res.data.records[id],</span><br><span class="line">                      &#125;,</span><br><span class="line">                  &#125;</span><br><span class="line">              );</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+
+</div>
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+        
+    
+      
+            
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://lifewn.github.io/2019/10/16/网站右侧的客服/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1807,7 +2121,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
