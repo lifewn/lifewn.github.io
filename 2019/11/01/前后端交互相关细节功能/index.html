@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "不怕万人阻挡，只怕自己投降。你如何回忆，决定你是一个怎样的人！人生当苦无妨，良人当归即可。逝者如斯乎，不舍昼夜。";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+  
+  
+  <link rel="stylesheet" media="all" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ajax,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前端表单提交ajax相关代码片段引入jqurey12&amp;lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-3.4.0.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script type=&quot;text/javascript&quot; src=&quot;js/openip.js&quot;&amp;gt;&amp;lt;/script&amp;gt;//封装的ajax的url  openip.">
+<meta name="keywords" content="ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端交互相关细节功能">
+<meta property="og:url" content="http://lifewn.github.io/2019/11/01/前后端交互相关细节功能/index.html">
+<meta property="og:site_name" content="lifewn">
+<meta property="og:description" content="前端表单提交ajax相关代码片段引入jqurey12&amp;lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-3.4.0.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script type=&quot;text/javascript&quot; src=&quot;js/openip.js&quot;&amp;gt;&amp;lt;/script&amp;gt;//封装的ajax的url  openip.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-11-01T04:58:16.546Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前后端交互相关细节功能">
+<meta name="twitter:description" content="前端表单提交ajax相关代码片段引入jqurey12&amp;lt;script type=&quot;text/javascript&quot; src=&quot;js/jquery-3.4.0.min.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&amp;lt;script type=&quot;text/javascript&quot; src=&quot;js/openip.js&quot;&amp;gt;&amp;lt;/script&amp;gt;//封装的ajax的url  openip.">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"author":"Lifewn","position":"left","display":"post","offset":6,"b2t":"ture","scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"canvas_nest":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Lifewn'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://lifewn.github.io/2019/11/01/前后端交互相关细节功能/">
+
+
+
+
+
+  <title>前后端交互相关细节功能 | lifewn</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<a href="https://github.com/augostar" style="display: inline-block;position: absolute; top:0;right:0;border:0;z-index: 99999999;"><img width="120" height="120" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_red_aa0000.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1" ondragstart="return false"></a>
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><script>
+ function GetRandomNum(Min,Max)
+  {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return(Min + Math.round(Rand * Range));
+  }
+function setSidebarMarginTop (headerOffset) {
+    return $('#sidebar').css({ 'margin-top': headerOffset });
+  }
+ function getHeaderOffset () {
+    return $('.header-inner').height() + CONFIG.sidebar.offset;
+  }
+  window.onload=function(){
+    var subtitle = "不怕万人阻挡，只怕自己投降。你如何回忆，决定你是一个怎样的人！人生当苦无妨，良人当归即可。逝者如斯乎，不舍昼夜。";
+     var mytitle = subtitle.split("W");
+     var max = mytitle.length-1;
+     var index = GetRandomNum(0,max);
+     var text = mytitle[index];
+     $("#helloTitle").html(text);
+     var headOffset = getHeaderOffset();
+     setSidebarMarginTop(headOffset);
+   // alert(getHeaderOffset());
+  }
+</script>
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title animated  infinite bounce slower">lifewn</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle  animated  rubberBand delay-5s" itemprop="description">不怕万人阻挡，只怕自己投降。你如何回忆，决定你是一个怎样的人！人生当苦无妨，良人当归即可。逝者如斯乎，不舍昼夜。</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="animated  zoomIn delay-1s menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home                          //首页"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive          //归档"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th           //分类"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags                     //标签"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user                   //关于"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar        //日程表"></i> <br>
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-我的简历">
+          <a href="/我的简历/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user          //我的简历"></i> <br>
+            
+            我的简历
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lifewn.github.io/2019/11/01/前后端交互相关细节功能/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lifewn">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/150256440.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lifewn">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="site-subtitle  animated  rubberBand delay-5s slower post-title" itemprop="name headline">前后端交互相关细节功能</h2>
+        
+
+        <div class="post-meta">
+        
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-01T08:37:13+08:00">
+                2019-11-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前后端交互/" itemprop="url" rel="index">
+                    <span itemprop="name">前后端交互</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="前端表单提交ajax相关代码片段"><a href="#前端表单提交ajax相关代码片段" class="headerlink" title="前端表单提交ajax相关代码片段"></a>前端表单提交ajax相关代码片段</h2><h3 id="引入jqurey"><a href="#引入jqurey" class="headerlink" title="引入jqurey"></a>引入jqurey</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/jquery-3.4.0.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"js/openip.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span>//封装的ajax的url</span><br></pre></td></tr></table></figure>
+
+<h3 id="openip-js代码"><a href="#openip-js代码" class="headerlink" title="openip.js代码"></a>openip.js代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">openip</span><span class="params">($str)</span></span>&#123;</span><br><span class="line">	<span class="keyword">var</span> myip = <span class="string">"http://192.168.1.130/chenqianAdmin/public/index.php/api/"</span>+$str;</span><br><span class="line">	<span class="keyword">return</span> myip;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="绑定from的id"><a href="#绑定from的id" class="headerlink" title="绑定from的id"></a>绑定from的id</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form  <span class="attribute">id</span>=<span class="string">"form1"</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="调用方法提交"><a href="#调用方法提交" class="headerlink" title="调用方法提交"></a>调用方法提交</h3><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="attribute">type</span>=<span class="string">"image"</span> <span class="attribute">name</span>=<span class="string">"sumbit"</span> <span class="attribute">onclick</span>=<span class="string">"backadd()"</span> <span class="attribute">id</span>=<span class="string">"sumbit"</span> <span class="attribute">src</span>=<span class="string">"images/btn.png"</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+<h3 id="ajax调用后端完成表单提交"><a href="#ajax调用后端完成表单提交" class="headerlink" title="ajax调用后端完成表单提交"></a>ajax调用后端完成表单提交</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//反馈提交</span></span><br><span class="line">		<span class="function"><span class="keyword">function</span> <span class="title">backadd</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">			<span class="keyword">var</span> formData = <span class="keyword">new</span> FormData($(<span class="string">"#form1"</span>)[<span class="number">0</span>]);</span><br><span class="line">			<span class="comment">//serialize() 方法通过序列化表单值，创建 URL 编码文本字符串,这个是jquery提供的方法</span></span><br><span class="line">			$.ajax(&#123;</span><br><span class="line">				type: <span class="string">"post"</span>,</span><br><span class="line">				url: <span class="string">"http://192.168.1.130/chenqianAdmin/public/index.php/api/Freedback/backAdd"</span>, <span class="comment">//数据传输的控制器方法</span></span><br><span class="line">				data: formData, <span class="comment">//这里data传递过去的是序列化以后的字符串</span></span><br><span class="line">				cache: <span class="literal">false</span>,</span><br><span class="line">				processData: <span class="literal">false</span>,</span><br><span class="line">				contentType: <span class="literal">false</span>,</span><br><span class="line">				success: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">					<span class="built_in">console</span>.log(data);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line">		&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="前台根据id进行a标签绑定跳转"><a href="#前台根据id进行a标签绑定跳转" class="headerlink" title="前台根据id进行a标签绑定跳转"></a>前台根据id进行a标签绑定跳转</h3><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a标签根据id跳转</span></span><br><span class="line"> &lt;a href=<span class="string">"news.html?id=$&#123;data[i].id&#125;"</span> <span class="keyword">class</span>=<span class="string">"biaoqii"</span> style=<span class="string">"width: 80px;height: 30px;line-height: 30px; center;display: block;margin: auto;text-align: center;border: 1px solid gray;"</span>&gt;查看详情&lt;a&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="完整代码从后端获取数据，显示在前台，前台根据id进行a标签绑定跳转"><a href="#完整代码从后端获取数据，显示在前台，前台根据id进行a标签绑定跳转" class="headerlink" title="完整代码从后端获取数据，显示在前台，前台根据id进行a标签绑定跳转"></a>完整代码从后端获取数据，显示在前台，前台根据id进行a标签绑定跳转</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">var str = <span class="string">''</span>;</span><br><span class="line">				$.ajax(&#123;</span><br><span class="line">					type: <span class="string">"post"</span>,</span><br><span class="line">					url: openip(<span class="string">"news/lists"</span>),</span><br><span class="line">					async: <span class="literal">true</span>,</span><br><span class="line">					dataType: <span class="string">'json'</span>,</span><br><span class="line">					success: function(data) &#123;</span><br><span class="line">						<span class="keyword">for</span> (var i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">				  </span><br><span class="line">							str +=</span><br><span class="line">								`<span class="javascript"></span></span><br><span class="line"><span class="javascript">								&lt;div style=<span class="string">"width: 30%;height: 223px;float: left;margin-left: 20px;margin-top: 40px;"</span>&gt;</span></span><br><span class="line"><span class="javascript">													  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"cont"</span> style=<span class="string">"width: 100%;height: 50px;line-height: 50px;text-align: center;font-size: 18px;border-bottom: 1px solid gainsboro;"</span>&gt;$&#123;data[i].title&#125;&lt;<span class="regexp">/div&gt;</span></span></span><br><span class="line"><span class="javascript">													  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"cont"</span> style=<span class="string">"width: 95%;height: 100px;padding: 10px 8px;"</span>&gt;</span></span><br><span class="line"><span class="javascript">														 &lt;p&gt; $&#123;data[i].connent&#125;&lt;<span class="regexp">/p&gt; </span></span></span><br><span class="line"><span class="javascript">													  &lt;<span class="regexp">/div&gt;</span></span></span><br><span class="line"><span class="javascript">													  &lt;div style=<span class="string">"width: 100%;height: 50px;line-height: 50px;"</span>&gt;</span></span><br><span class="line"><span class="javascript">														  &lt;a href=<span class="string">"news.html?id=$&#123;data[i].id&#125;"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"biaoqii"</span> style=<span class="string">"width: 80px;height: 30px;line-height: 30px; center;display: block;margin: auto;text-align: center;border: 1px solid gray;"</span>&gt;查看详情&lt;a&gt;</span></span><br><span class="line"><span class="javascript">													  &lt;<span class="regexp">/div&gt;</span></span></span><br><span class="line"><span class="javascript">								&lt;<span class="regexp">/div&gt;	</span></span></span><br><span class="line"><span class="javascript">							</span>`</span><br><span class="line">						&#125;</span><br><span class="line">						$(<span class="string">"#xinwen"</span>).append(str);</span><br><span class="line">					&#125;,</span><br><span class="line">					error: function(err) &#123;</span><br><span class="line">						<span class="built_in">console</span>.log(err);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="接收跳转的id，并且显示跳转id的相关数据"><a href="#接收跳转的id，并且显示跳转id的相关数据" class="headerlink" title="接收跳转的id，并且显示跳转id的相关数据"></a>接收跳转的id，并且显示跳转id的相关数据</h3><figure class="highlight qml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> aa = <span class="built_in">window</span>.location.search.split(<span class="string">"id="</span>)[<span class="number">1</span>] ; <span class="comment">//获取id当前地址</span></span><br><span class="line">					<span class="comment">//alert(aa);</span></span><br><span class="line">				<span class="keyword">var</span> str = <span class="string">''</span>;</span><br><span class="line">				$.ajax(&#123;</span><br><span class="line">					<span class="attribute">type</span>: <span class="string">"post"</span>,</span><br><span class="line">					<span class="attribute">url</span>: openip(<span class="string">"news/lists"</span>),</span><br><span class="line">					<span class="attribute">async</span>: <span class="literal">true</span>,</span><br><span class="line">					<span class="attribute">dataType</span>: <span class="string">'json'</span>,</span><br><span class="line">					<span class="attribute">data</span>: aa,</span><br><span class="line">					<span class="attribute">success</span>: <span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">						<span class="comment">//alert(data.length);</span></span><br><span class="line">						<span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;data.length;i++)&#123;</span><br><span class="line">							<span class="keyword">if</span>(data[i].id==aa)&#123;</span><br><span class="line">								<span class="keyword">var</span> <span class="built_in">date</span> = <span class="keyword">new</span> <span class="built_in">Date</span>(data[i].time*<span class="number">1000</span>);<span class="comment">//时间戳转换，十位的数字转换*1000，十三位的不需要*</span></span><br><span class="line">								Y = <span class="built_in">date</span>.getFullYear() + <span class="string">'-'</span>;</span><br><span class="line">								M = (<span class="built_in">date</span>.getMonth()+<span class="number">1</span> &lt; <span class="number">10</span> ? <span class="string">'0'</span>+(<span class="built_in">date</span>.getMonth()+<span class="number">1</span>) : <span class="built_in">date</span>.getMonth()+<span class="number">1</span>) + <span class="string">'-'</span>;</span><br><span class="line">								D = <span class="built_in">date</span>.getDate() + <span class="string">' '</span>;</span><br><span class="line">								h = <span class="built_in">date</span>.getHours() + <span class="string">':'</span>;</span><br><span class="line">								m = <span class="built_in">date</span>.getMinutes() + <span class="string">':'</span>;</span><br><span class="line">								s = <span class="built_in">date</span>.getSeconds(); </span><br><span class="line">								<span class="keyword">var</span> shijian = Y+M+D+h+m+s;</span><br><span class="line">								<span class="built_in">console</span>.log(shijian); </span><br><span class="line">								str +=</span><br><span class="line">								<span class="string">`</span></span><br><span class="line"><span class="string">								 &lt;div style="width: 100%;height: 50px; line-height: 50px;text-align: center;font-size: 22px;"&gt;<span class="subst">$&#123;data[i].title&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">								 &lt;div style="width:100%;height:40px;line-height:40px;text-align: center;"&gt;发布时间:<span class="subst">$&#123;shijian&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">								 	&lt;p style="font-size: 16px;text-indent: 2rem;margin-top: 20px;line-height:40px;"&gt;<span class="subst">$&#123;data[i].connent&#125;</span> &lt;/p&gt;</span></span><br><span class="line"><span class="string">									</span></span><br><span class="line"><span class="string">									</span></span><br><span class="line"><span class="string">								`</span></span><br><span class="line">							&#125;</span><br><span class="line">							</span><br><span class="line">						&#125;</span><br><span class="line">						$(<span class="string">"#con"</span>).append(str);</span><br><span class="line">						<span class="built_in">console</span>.log(data);</span><br><span class="line">				 </span><br><span class="line">					&#125;,</span><br><span class="line">				</span><br><span class="line">				</span><br><span class="line">					<span class="attribute">error</span>: <span class="function"><span class="keyword">function</span>(<span class="params">err</span>) </span>&#123;</span><br><span class="line">						<span class="built_in">console</span>.log(err);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br></pre></td></tr></table></figure>
+
+<!-- more -->
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+<div>
+
+<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+
+
+</div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ajax/" rel="tag"><i class="fa fa-tag"></i> ajax</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/22/vue安装流程/" rel="next" title="vue安装流程">
+                <i class="fa fa-chevron-left"></i> vue安装流程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/01/hexo创建个人博客/" rel="prev" title="hexo创建个人博客">
+                hexo创建个人博客 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_email">邮件</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_qzone">QQ空间</a>
+<a class="jiathis_button_tqq">腾讯微博</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=2140465" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript">
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NzE4Ni8yMzY4Ng=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image animated  pulse slow" itemprop="image" src="/images/150256440.jpg" alt="Lifewn">
+            
+              <p class="site-author-name" itemprop="name">Lifewn</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">类型</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/augostar" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://mail.163.com/" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i></a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://wpa.qq.com/msgrd?v=3&uin=526162469&site=qq&menu=yes" target="_blank" title="QQ">
+                      
+                        <i class="fa fa-fw fa-qq"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端表单提交ajax相关代码片段"><span class="nav-number">1.</span> <span class="nav-text">前端表单提交ajax相关代码片段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引入jqurey"><span class="nav-number">1.1.</span> <span class="nav-text">引入jqurey</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#openip-js代码"><span class="nav-number">1.2.</span> <span class="nav-text">openip.js代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绑定from的id"><span class="nav-number">1.3.</span> <span class="nav-text">绑定from的id</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用方法提交"><span class="nav-number">1.4.</span> <span class="nav-text">调用方法提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ajax调用后端完成表单提交"><span class="nav-number">1.5.</span> <span class="nav-text">ajax调用后端完成表单提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前台根据id进行a标签绑定跳转"><span class="nav-number">1.6.</span> <span class="nav-text">前台根据id进行a标签绑定跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#完整代码从后端获取数据，显示在前台，前台根据id进行a标签绑定跳转"><span class="nav-number">1.7.</span> <span class="nav-text">完整代码从后端获取数据，显示在前台，前台根据id进行a标签绑定跳转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收跳转的id，并且显示跳转id的相关数据"><span class="nav-number">1.8.</span> <span class="nav-text">接收跳转的id，并且显示跳转id的相关数据</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Augo</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+
+    <span title="Site words total count"></span>
+  
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共字</span>
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <span id="busuanzi_container_site_pv" style="display:none">
+      本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+      <span class="post-meta-divider">|</span>
+  </span>
+  <span id="busuanzi_container_site_uv" style="display:none">
+      有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+  </span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
